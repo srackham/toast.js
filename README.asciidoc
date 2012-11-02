@@ -31,22 +31,34 @@ Toast.js uses jQuery so you'll also need to include it.  See
 === API
 Popup functions:
 
-  Toaster.info    (message [,title [, options]])
-  Toaster.warning (message [,title [, options]])
-  Toaster.error   (message [,title [, options]])
-  Toaster.success (message [,title [, options]])
+  Toast.info    (message [,title [, options]])
+  Toast.warning (message [,title [, options]])
+  Toast.error   (message [,title [, options]])
+  Toast.success (message [,title [, options]])
 
 Function parameters:
 
   message: String
   title:   String
-  options: Object with properties to override Toaster.defaults
+  options: Object with properties to override Toast.defaults
 
-The read-write `Toaster.defaults` object contains CSS and animation
+The read-write `Toast.defaults` object contains CSS and animation
 parameters (see `var _defaults` in `toast.js`.
 
 Examples:
 
 ----
-
+Toast.info('Simple message');
+Toast.success('Message with title', 'Title');
+Toast.error('Sticky message', '', {displayDuration: 0});
+Toast.defaults.displayDuration = 1000;  // Change default timeout.
+Toast.defaults.fadeOutDuration = 800;   // Change default fade out time.
 ----
+
+=== Implementation
+- When the first API call is made Toast.js inserts a container for the
+  popups into the DOM with ID 'toast-container'.
+- Toast popups (CSS class 'toast') are inserted into the top of the
+  toast container (existing messages push down).
+- The popups are removed from the toast container when they timeout or
+  are clicked by the user.

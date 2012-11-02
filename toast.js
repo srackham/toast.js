@@ -7,11 +7,11 @@
 //              https://github.com/CodeSeven/toastr
 //
 
-var Toaster = (function($){
+var Toast = (function($){
 
   /* Private variables and functions */
 
-  // Exported as Toaster.defaults
+  // Exported as Toast.defaults
   var _defaults = {
     displayDuration: 2000,    // In milliseconds, set to 0 to make sticky.
     fadeOutDuration: 800,     // In milliseconds.
@@ -28,9 +28,10 @@ var Toaster = (function($){
     if (!_container) {
       _container = $('<div>')
         .attr('id', 'toast-container')
-        .css(options.containerCSS)
         .appendTo($('body'));
     }
+    _container.css(options.containerCSS);
+    console.log(options.containerCSS);
     var toastElement = $('<div>')
       .addClass('toast')
       .addClass(options.toastClass)
@@ -61,20 +62,20 @@ var Toaster = (function($){
 
   return {
 
-    // Toaster.defaults
+    // Toast.defaults
     // Modifiable default CSS and animation parameters.
     defaults: _defaults,
 
     // Popup functions:
     //
-    // Toaster.info    (message [,title [, options]])
-    // Toaster.warning (message [,title [, options]])
-    // Toaster.error   (message [,title [, options]])
-    // Toaster.success (message [,title [, options]])
+    // Toast.info    (message [,title [, options]])
+    // Toast.warning (message [,title [, options]])
+    // Toast.error   (message [,title [, options]])
+    // Toast.success (message [,title [, options]])
     //
     // message: String
     // title:   String
-    // options: Object with properties to override Toaster.defaults
+    // options: Object with properties to override Toast.defaults
 
     info: function(message, title, options) {
       _notify(message, title,
