@@ -3,19 +3,11 @@ var Toaster = (function($){
   /* Private variables and functions */
 
   var _defaults = {
-    duration: 2000,  // Display time in milliseconds, set to 0 to make sticky.
-    fadeout: 400,    // Fade out time in milliseconds.
-    toastClass: '',  // Notification CSS class name, absence implies warning.
-    toastCSS: {
-      marginBottom: '8px'
-    },
-    containerCSS: {
-      width: '300px',
-      top: '12px',
-      left: '12px',
-      position: 'fixed',
-      zIndex: 9999
-    }
+    displayDuration: 2000,    // In milliseconds, set to 0 to make sticky.
+    fadeoutDuration: 800,     // In milliseconds.
+    toastClass: 'toast-info', // Notification CSS class name.
+    toastCSS: {},     // Override .toast class in toast.css
+    containerCSS: {}  // Override .toast-container class in toast.css
   };
 
   var _container; // Contains toast stack.
@@ -24,30 +16,29 @@ var Toaster = (function($){
   function _notify(message, title, options) {
     options = $.extend({}, _defaults, options);
     if (!_container) {
-      _container = $('<div>').css(options.containerCSS).appendTo($('body'));
+      _container = $('<div>')
+        .attr('id', 'toast-container')
+        .css(options.containerCSS)
+        .appendTo($('body'));
     }
     var toastElement = $('<div>')
-      .addClass('alert')
+      .addClass('toast')
       .addClass(options.toastClass)
-      .css(options.toastCSS)
-      .hover(
-        function() { $(this).css({cursor: 'pointer'}); },
-        function() { $(this).css({cursor: 'default'}); }
-      );
+      .css(options.toastCSS);
     if (title) {
-      var titleElement = $('<div>').css({fontWeight: 'bold'}).append(title);
+      var titleElement = $('<div>').addClass('toast-title').append(title);
       toastElement.append(titleElement);
     }
     if (message) {
-      var messageElement = $('<div>').append(message);
+      var messageElement = $('<div>').addClass('toast-message').append(message);
       toastElement.append(messageElement);
     }
-    if (options.duration > 0) {
+    if (options.displayDuration > 0) {
       setTimeout(function() {
-        toastElement.animate({ opacity: 0 }, options.fadeOut, function() {
+        toastElement.fadeOut(options.fadeoutDuration, function() {
           toastElement.remove();
         });
-      }, options.duration);
+      }, options.displayDuration);
     }
     toastElement.bind('click', function() {
       toastElement.remove();
@@ -72,21 +63,22 @@ var Toaster = (function($){
       }
       */
       _notify(message, title,
-          $.extend({}, {toastClass: 'alert-info'}, options));
+          $.extend({}, {toastClass: 'toast-info'}, options));
     },
 
     warning: function(message, title, options) {
-      _notify(message, title, options);
+      _notify(message, title,
+          $.extend({}, {toastClass: 'toast-warning'}, options));
     },
 
     error: function(message, title, options) {
       _notify(message, title,
-          $.extend({}, {toastClass: 'alert-error'}, options));
+          $.extend({}, {toastClass: 'toast-error'}, options));
     },
 
     success: function(message, title, options) {
       _notify(message, title,
-          $.extend({}, {toastClass: 'alert-success'}, options));
+          $.extend({}, {toastClass: 'toast-success'}, options));
     }
   };
 

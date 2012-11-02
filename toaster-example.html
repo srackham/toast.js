@@ -10,13 +10,14 @@
     <h1>toaster.js Examples</h1>
     <ul class="list">
       <li><a href="#" onclick="Toaster.success('Message')">Success</a></li>
-      <li><a href="#" onclick="Toaster.success('Message', 'Title', {duration: 0})">Sticky success with title</a></li>
-      <li><a href="#" onclick="Toaster.info('Message', '', {duration: 0})">Sticky info</a></li>
-      <li><a href="#" onclick="Toaster.info('Message', 'Title')">Info with title</a></li>
-      <li><a href="#" onclick="Toaster.warning('Message')">Warning</a></li>
+      <li><a href="#" onclick="Toaster.success('Message', 'Title', {displayDuration: 0})">Sticky success with title</a></li>
+      <li><a href="#" onclick="Toaster.info('Message', '', {displayDuration: 0})">Sticky info</a></li>
+      <li><a href="#" onclick="Toaster.defaults.displayDuration=500; Toaster.info('Default displayDuration 500ms', 'Title')">Info: Change displayDuration to 200ms</a></li>
+      <li><a href="#" onclick="Toaster.defaults.displayDuration=2000; Toaster.warning('Default displayDuration 2000ms')">Warning: Change displayDuration to 2000ms</a></li>
       <li><a href="#" onclick="Toaster.warning('Message', 'Title')">Warning with title</a></li>
       <li><a href="#" onclick="Toaster.error('Message')">Error</a></li>
       <li><a href="#" onclick="Toaster.error('Message', 'Title')">Error with title</a></li>
+      <li><a href="#" onclick="Toaster.defaults.toastCSS={fontStyle: 'italic'}; Toaster.error('Message', 'Title')">Error with title: Change to italics</a></li>
     </ul>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
