@@ -13,29 +13,34 @@ var Toast = (function($){
 
   // Exported as Toast.defaults
   var _defaults = {
+    width: '',                // CSS length, overrides CSS file.
     displayDuration: 2000,    // In milliseconds, set to 0 to make sticky.
-    fadeOutDuration: 800,     // In milliseconds.
-    toastClass: '',   // CSS class name.
-    toastCSS: {},     // Override .toast properties in toast.css
-    containerCSS: {}  // Override #toast-container properties in toast.css
+    fadeOutDuration: 800      // In milliseconds.
   };
 
-  var _container; // Contains toast stack.
+  var _container; // Toast container DOM element.
 
-  // Does all the work.
-  function _notify(message, title, options) {
+  /**
+   * Display popup.
+   *
+   * @param {string} type 'info', 'success', 'error', 'warning'
+   * @param {string} message
+   * @param {string} [title]
+   * @param {Object} [options] Properties override Toast.defaults.
+   */
+  function _notify(type, message, title, options) {
     options = $.extend({}, _defaults, options);
     if (!_container) {
       _container = $('<div>')
         .attr('id', 'toast-container')
         .appendTo($('body'));
     }
-    _container.css(options.containerCSS);
-    console.log(options.containerCSS);
+    if (options.width) {
+      _container.css({width: options.width});
+    }
     var toastElement = $('<div>')
       .addClass('toast')
-      .addClass(options.toastClass)
-      .css(options.toastCSS);
+      .addClass('toast-' + type);
     if (title) {
       var titleElement = $('<div>').addClass('toast-title').append(title);
       toastElement.append(titleElement);
@@ -63,7 +68,7 @@ var Toast = (function($){
   return {
 
     // Toast.defaults
-    // Modifiable default CSS and animation parameters.
+    // Modifiable default parameters.
     defaults: _defaults,
 
     // Popup functions:
@@ -78,23 +83,19 @@ var Toast = (function($){
     // options: Object with properties to override Toast.defaults
 
     info: function(message, title, options) {
-      _notify(message, title,
-          $.extend({}, {toastClass: 'toast-info'}, options));
+      _notify('info', message, title, options);
     },
 
     warning: function(message, title, options) {
-      _notify(message, title,
-          $.extend({}, {toastClass: 'toast-warning'}, options));
+      _notify('warning', message, title, options);
     },
 
     error: function(message, title, options) {
-      _notify(message, title,
-          $.extend({}, {toastClass: 'toast-error'}, options));
+      _notify('error', message, title, options);
     },
 
     success: function(message, title, options) {
-      _notify(message, title,
-          $.extend({}, {toastClass: 'toast-success'}, options));
+      _notify('success', message, title, options);
     }
   };
 
