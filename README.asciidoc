@@ -1,0 +1,52 @@
+= toast.js browser notifier library
+
+:listingblock.: <pre><code>|</code></pre>
+
+== toast.js
+Toast.js is a flexible minimalist browser popup notifier library.
+
+- http://twitter.github.com/bootstrap/index.html[Bootstrap] friendly
+  but does not depend on Bootstrap (it's color scheme matches
+  Bootstrap alerts).
+
+- CSS can be statically styled from `toast.css` or dynamically styled
+  from your code.
+
+- Inspired by: https://github.com/Srirangan/notifer.js[notifier.js]
+  and https://github.com/CodeSeven/toastr[toastr].
+
+=== Usage
+Include `toast.js` and `toast.css` (along with JQuery) then call the
+Toast popup functions from your code e.g.
+
+  Toast.info('Hello World!');
+
+The nice thing about popups for transient message reporting is their
+ease of use -- just a single statement per message (no HTML markup or
+DOM manipulation required).
+
+Toast.js uses jQuery so you'll also need to include it.  See
+`toast-examples.html` for setup and some example usage.
+
+=== API
+Popup functions:
+
+  Toaster.info    (message [,title [, options]])
+  Toaster.warning (message [,title [, options]])
+  Toaster.error   (message [,title [, options]])
+  Toaster.success (message [,title [, options]])
+
+Function parameters:
+
+  message: String
+  title:   String
+  options: Object with properties to override Toaster.defaults
+
+The read-write `Toaster.defaults` object contains CSS and animation
+parameters (see `var _defaults` in `toast.js`.
+
+Examples:
+
+----
+
+----
