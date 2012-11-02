@@ -5,9 +5,9 @@ var Toaster = (function($){
   var _defaults = {
     displayDuration: 2000,    // In milliseconds, set to 0 to make sticky.
     fadeoutDuration: 800,     // In milliseconds.
-    toastClass: 'toast-info', // Notification CSS class name.
-    toastCSS: {},     // Override .toast class in toast.css
-    containerCSS: {}  // Override .toast-container class in toast.css
+    toastClass: '',   // CSS class name.
+    toastCSS: {},     // Override .toast properties in toast.css
+    containerCSS: {}  // Override #toast-container properties in toast.css
   };
 
   var _container; // Contains toast stack.
@@ -52,16 +52,11 @@ var Toaster = (function($){
 
   return {
 
+    // Default CSS and animation parameters.
     defaults: _defaults,
 
     // Display functions.
     info: function(message, title, options) {
-      /*
-      if (typeof title === 'object') {  // title is optional argument.
-        options = title;
-        title = undefined;
-      }
-      */
       _notify(message, title,
           $.extend({}, {toastClass: 'toast-info'}, options));
     },
