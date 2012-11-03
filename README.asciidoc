@@ -14,6 +14,9 @@ Toast.js is a flexible minimalist browser popup notifier library.
 
 http://www.methods.co.nz/misc/toast/toast-examples.html[Live demo].
 
+*Note:* The TypeScript port (`toast-ts.ts`) is not part of the project
+per se, I included it out of interest.
+
 === Usage
 Include `toast.js` and `toast.css` (along with JQuery) then call the
 Toast popup functions from your code e.g.
