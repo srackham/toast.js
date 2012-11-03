@@ -6,8 +6,8 @@
 Toast.js is a flexible minimalist browser popup notifier library.
 
 - http://twitter.github.com/bootstrap/index.html[Bootstrap] friendly
-  but does not depend on Bootstrap (it's color scheme matches
-  Bootstrap alerts).
+  but does not depend on Bootstrap (notification types and colors
+  match Bootstrap alerts).
 
 - Inspired by: https://github.com/Srirangan/notifer.js[notifier.js]
   and https://github.com/CodeSeven/toastr[toastr].
@@ -23,7 +23,7 @@ ease of use -- just a single statement per message (no HTML markup or
 DOM manipulation required).
 
 Toast.js uses jQuery so you'll also need to include it.  See
-`toast-examples.html` for setup and some example usage.
+the `toast-examples.html` examples.
 
 === API
 Popup functions:
@@ -48,10 +48,10 @@ configuration properties:
 
 Behavior:
 
-- When the first API call is made Toast.js inserts a container for the
+- When the first call is made Toast.js inserts a container for the
   popups into the DOM with ID 'toast-container'.
-- Toast popups (CSS class 'toast') are inserted into the top of the
-  toast container (existing messages are pushed down).
+- Toast popups are inserted into the top of the toast container
+  (existing messages are pushed down).
 - The popups are removed from the toast container when they timeout or
   are clicked by the user.
 
