@@ -9,7 +9,7 @@ Toast.js is a flexible minimalist browser popup notifier library.
   but does not depend on Bootstrap (notification types and colors
   match Bootstrap alerts).
 
-- Inspired by: https://github.com/Srirangan/notifer.js[notifier.js]
+- Inspired by https://github.com/Srirangan/notifer.js[notifier.js]
   and https://github.com/CodeSeven/toastr[toastr].
 
 === Usage
