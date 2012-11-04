@@ -1,8 +1,6 @@
 //
 // Toast popup notifier
 //
-// TypeScript port of toast.js
-//
 // By: Stuart Rackham
 // https://github.com/srackham/toast.js
 //
@@ -48,7 +46,7 @@ module Toast {
   var _container; // Toast container DOM element.
 
   function _toast(
-      type: string,     // 'info', 'success', 'error', 'warning'
+      type:     string,     // 'info', 'success', 'error', 'warning'
       message:  string,
       title?:   string,
       options?: Options = {}

@@ -3,7 +3,8 @@
 :listingblock.: <pre><code>|</code></pre>
 
 == toast.js
-Toast.js is a flexible minimalist browser popup notifier library.
+Toast.js is a flexible minimalist JavaScript popup notifications
+library written in TypeScript.
 
 - http://twitter.github.com/bootstrap/index.html[Bootstrap] friendly
   but does not depend on Bootstrap (notification types and colors
@@ -13,9 +14,6 @@ Toast.js is a flexible minimalist browser popup notifier library.
   and https://github.com/CodeSeven/toastr[toastr].
 
 http://www.methods.co.nz/misc/toast/toast-examples.html[Live demo].
-
-*Note:* The TypeScript port (`toast-ts.ts`) is not part of the project
-per se, I included it out of interest.
 
 === Usage
 Include `toast.js` and `toast.css` (along with JQuery) then call the
@@ -70,3 +68,16 @@ Toast.defaults.displayDuration = 1000;
 Toast.defaults.fadeOutDuration = 800;
 Toast.defaults.width = '800px';
 ----
+
+=== Building
+To generate `toast.js` JavaScript from the `toast.ts` source file copy
+the `jquery.d.ts` type declaration file from the TypeScript
+distribution to the build directory then run the Typescript compiler:
+
+  tsc toast.ts
+
+If you have https://github.com/mde/jake[jake] installed you can run:
+
+  jake build
+
+
