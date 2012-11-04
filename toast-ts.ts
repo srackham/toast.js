@@ -14,40 +14,32 @@
 
 module Toast {
 
-  /* Public API */
+  // Optional parameters passed to Toast popups.
+  export interface Options {
+    width?: string;             // CSS length, overrides CSS file.
+    displayDuration?: number;   // In milliseconds, set to 0 to make sticky.
+    fadeOutDuration?: number;   // In milliseconds.
+  };
 
-  // Modifiable default parameters.
-  export var defaults = {
-    width: '',                // CSS length, overrides CSS file.
-    displayDuration: 2000,    // In milliseconds, set to 0 to make sticky.
-    fadeOutDuration: 800      // In milliseconds.
+  // Modifiable defaults.
+  export var defaults: Options = {
+    width: '',
+    displayDuration: 2000,
+    fadeOutDuration: 800
   };
 
   // Popup functions:
-  //
-  // Toast.info    (message [,title [, options]])
-  // Toast.warning (message [,title [, options]])
-  // Toast.error   (message [,title [, options]])
-  // Toast.success (message [,title [, options]])
-  //
-  // message: String
-  // title:   String
-  // options: Object with properties to override Toast.defaults
-
-  export function info(message:string, title:string, options:any) {
-    _notify('info', message, title, options);
+  export function info(message: string, title?: string, options?: Options) {
+    _toast('info', message, title, options);
   }
-
-  export function warning(message:string, title:string, options:any) {
-    _notify('warning', message, title, options);
+  export function warning(message: string, title?: string, options?: Options) {
+    _toast('warning', message, title, options);
   }
-
-  export function error(message:string, title:string, options:any) {
-    _notify('error', message, title, options);
+  export function error(message: string, title?: string, options?: Options) {
+    _toast('error', message, title, options);
   }
-
-  export function success(message:string, title:string, options:any) {
-    _notify('success', message, title, options);
+  export function success(message: string, title?: string, options?: Options) {
+    _toast('success', message, title, options);
   }
 
 
@@ -55,15 +47,13 @@ module Toast {
 
   var _container; // Toast container DOM element.
 
-  /**
-   * Display popup.
-   *
-   * @param {string} type 'info', 'success', 'error', 'warning'
-   * @param {string} message
-   * @param {string} [title]
-   * @param {Object} [options] Properties override Toast.defaults.
-   */
-  function _notify(type:string, message:string, title:string, options:any) {
+  function _toast(
+      type: string,     // 'info', 'success', 'error', 'warning'
+      message:  string,
+      title?:   string,
+      options?: Options = {}
+    ): void
+  {
     options = $.extend({}, defaults, options);
     if (!_container) {
       _container = $('<div>')
