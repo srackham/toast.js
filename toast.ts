@@ -53,7 +53,7 @@ module Toast {
     ): void
   {
     options = $.extend({}, defaults, options);
-    if (!_container) {
+    if ($('#toast-container').length === 0) {
       _container = $('<div>')
         .attr('id', 'toast-container')
         .appendTo($('body'));

@@ -30,7 +30,7 @@ var Toast;
         }; }
         options = $.extend({
         }, Toast.defaults, options);
-        if(!_container) {
+        if($('#toast-container').length === 0) {
             _container = $('<div>').attr('id', 'toast-container').appendTo($('body'));
         }
         if(options.width) {
