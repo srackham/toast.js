@@ -30,8 +30,11 @@ var Toast;
         }; }
         options = $.extend({
         }, Toast.defaults, options);
-        if($('#toast-container').length === 0) {
-            _container = $('<div>').attr('id', 'toast-container').appendTo($('body'));
+        if(!_container) {
+            _container = $('#toast-container');
+            if($('#toast-container').length === 0) {
+                _container = $('<div>').attr('id', 'toast-container').appendTo($('body'));
+            }
         }
         if(options.width) {
             _container.css({
