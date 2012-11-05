@@ -51,10 +51,11 @@ configuration properties:
 
 Behavior:
 
-- When the first call is made Toast.js inserts a container for the
-  popups into the DOM with ID 'toast-container'.
 - Toast popups are inserted into the top of the toast container
   (existing messages are pushed down).
+- The toast container is a 'div' element with ID 'toast-container', if
+  it doesn't already exist Toast.js creates and inserts it into the
+  DOM 'body' element.
 - The popups are removed from the toast container when they timeout or
   are clicked by the user.
 
