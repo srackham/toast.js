@@ -55,7 +55,7 @@ module Toast {
     options = $.extend({}, defaults, options);
     if (!_container) {
       _container = $('#toast-container');
-      if ($('#toast-container').length === 0) {
+      if (_container.length === 0) {
         // Create container element if it is not in the static HTML.
         _container = $('<div>')
           .attr('id', 'toast-container')
