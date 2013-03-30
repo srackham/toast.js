@@ -20,3 +20,8 @@ task 'build', ->
   jake.exec ["tsc --declaration #{TS_FILE}"], ->
         writeHeader()
         complete()
+
+desc 'Push project to github.'
+task 'push', ->
+  console.log 'pushing to github...'
+  jake.exec ['git push --tags origin master'], EXEC_PRINT_OPTS
