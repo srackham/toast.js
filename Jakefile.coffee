@@ -17,6 +17,6 @@ task 'default', -> jake.exec ['jake -T'], EXEC_PRINT_OPTS
 
 desc 'Compile TypeScript source.'
 task 'build', ->
-  jake.exec ["tsc --declarations #{TS_FILE}"], ->
+  jake.exec ["tsc --declaration #{TS_FILE}"], ->
         writeHeader()
         complete()

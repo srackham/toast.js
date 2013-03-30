@@ -1,8 +1,6 @@
-// Compiled from: toast.ts
-// https://github.com/srackham/toast.js
 var Toast;
 (function (Toast) {
-    ; ;
+    ;
     Toast.defaults = {
         width: '',
         displayDuration: 2000,
@@ -63,4 +61,4 @@ var Toast;
         _container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
-
+//@ sourceMappingURL=toast.js.map

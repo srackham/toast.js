@@ -12,7 +12,10 @@
 
 module Toast {
 
-  // Optional parameters passed to Toast popups.
+  /**
+   * Optional parameters passed to Toast popups.
+   * @type {{width: string, displayDuration: number, fadeOutDuration: number}}
+   */
   export interface Options {
     width?: string;             // CSS length, overrides CSS file.
     displayDuration?: number;   // In milliseconds, set to 0 to make sticky.
@@ -26,17 +29,45 @@ module Toast {
     fadeOutDuration: 800
   };
 
-  // Popup functions:
-  export function info(message: string, title?: string, options?: Options) {
+  /* Popup functions */
+
+  /**
+   * Popup informational message.
+   * @param message A message string.
+   * @param title An optional title string.
+   * @param options An optional map of {@link Options}.
+   */
+  export function info(message:string, title?:string, options?:Options) {
     _toast('info', message, title, options);
   }
-  export function warning(message: string, title?: string, options?: Options) {
+
+  /**
+   * Popup warning message.
+   * @param message A message string.
+   * @param title An optional title string.
+   * @param options An optional map of {@link Options}.
+   */
+  export function warning(message:string, title?:string, options?:Options) {
     _toast('warning', message, title, options);
   }
-  export function error(message: string, title?: string, options?: Options) {
+
+  /**
+   * Popup error message.
+   * @param message A message string.
+   * @param title An optional title string.
+   * @param options An optional map of {@link Options}.
+   */
+  export function error(message:string, title?:string, options?:Options) {
     _toast('error', message, title, options);
   }
-  export function success(message: string, title?: string, options?: Options) {
+
+  /**
+   * Popup success message.
+   * @param message A message string.
+   * @param title An optional title string.
+   * @param options An optional map of {@link Options}.
+   */
+  export function success(message:string, title?:string, options?:Options) {
     _toast('success', message, title, options);
   }
 
@@ -50,7 +81,7 @@ module Toast {
       message:  string,
       title?:   string,
       options?: Options = {}
-    ): void
+      ): void
   {
     options = $.extend({}, defaults, options);
     if (!_container) {
@@ -58,16 +89,16 @@ module Toast {
       if (_container.length === 0) {
         // Create container element if it is not in the static HTML.
         _container = $('<div>')
-          .attr('id', 'toast-container')
-          .appendTo($('body'));
+            .attr('id', 'toast-container')
+            .appendTo($('body'));
       }
     }
     if (options.width) {
       _container.css({width: options.width});
     }
     var toastElement = $('<div>')
-      .addClass('toast')
-      .addClass('toast-' + type);
+        .addClass('toast')
+        .addClass('toast-' + type);
     if (title) {
       var titleElement = $('<div>').addClass('toast-title').append(title);
       toastElement.append(titleElement);
@@ -77,13 +108,13 @@ module Toast {
       toastElement.append(messageElement);
     }
     if (options.displayDuration > 0) {
-      setTimeout(function() {
-        toastElement.fadeOut(options.fadeOutDuration, function() {
+      setTimeout(function () {
+        toastElement.fadeOut(options.fadeOutDuration, function () {
           toastElement.remove();
         });
       }, options.displayDuration);
     }
-    toastElement.on('click', function() {
+    toastElement.on('click', function () {
       toastElement.remove();
     });
     _container.prepend(toastElement);
