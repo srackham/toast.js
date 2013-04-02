@@ -1,3 +1,5 @@
+// Compiled from: toast.ts
+// https://github.com/srackham/toast.js
 var Toast;
 (function (Toast) {
     ;
@@ -61,4 +63,3 @@ var Toast;
         _container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
-//@ sourceMappingURL=toast.js.map

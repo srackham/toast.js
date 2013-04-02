@@ -26,7 +26,3 @@ task 'push', ->
   console.log 'pushing to github...'
   jake.exec ['git push --tags origin master'], EXEC_PRINT_OPTS
 
-desc 'Publish Meteor smart package to Atmosphere repository.'
-task 'publish', ->
-  console.log 'publishing to Atmosphere...'
-  jake.exec ['mrt publish .'], EXEC_PRINT_OPTS
