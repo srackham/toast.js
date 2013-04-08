@@ -1,8 +1,8 @@
 {
   "name": "toastjs",
-  "description":  "Popup notifications library",
+  "description":  "Popup notifications library\n\nNOTE: Not compatible with Meteor 0.6.0 (Meteor var scoping breaks TypeScript generated code).",
   "homepage": "https://github.com/srackham/toast.js",
   "author": "Stuart Rackham",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "git": "https://github.com/srackham/toast.js.git"
 }

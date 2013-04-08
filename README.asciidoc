@@ -32,6 +32,9 @@ Toast has been also been published as a Meteorite
 https://atmosphere.meteor.com/package/toastjs[smart package] for
 use with the http://meteor.com/[Meteor] Web framework.
 
+NOTE: Not compatible with Meteor 0.6.0 (Meteor 'var scoping' breaks
+TypeScript generated code).
+
 === API
 Popup functions:
 
