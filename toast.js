@@ -63,3 +63,4 @@ var Toast;
         _container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
+this.Toast = Toast;

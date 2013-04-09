@@ -121,3 +121,4 @@ module Toast {
   }
 
 }
+this.Toast = Toast; // Fix Meteor 0.6.0 var scope incompatibility.
