@@ -5,6 +5,7 @@ var Toast;
     ;
     Toast.defaults = {
         width: '',
+		append:	false,
         displayDuration: 2000,
         fadeOutDuration: 800
     };
@@ -60,7 +61,10 @@ var Toast;
         toastElement.on('click', function () {
             toastElement.remove();
         });
-        _container.prepend(toastElement);
+		if(options.append)
+			_container.append(toastElement);
+		else
+			_container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
 this.Toast = Toast;
