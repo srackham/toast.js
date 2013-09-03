@@ -18,6 +18,8 @@ module Toast {
    */
   export interface Options {
     width?: string;             // CSS length, overrides CSS file.
+    append: boolean;            // Whether to append element (defaults to prepend)
+    center: boolean;            // Whether to center element (defaults to left align)
     displayDuration?: number;   // In milliseconds, set to 0 to make sticky.
     fadeOutDuration?: number;   // In milliseconds.
   };
@@ -25,6 +27,8 @@ module Toast {
   // Modifiable defaults.
   export var defaults: Options = {
     width: '',
+    append: false,
+    center: false,
     displayDuration: 2000,
     fadeOutDuration: 800
   };
@@ -74,13 +78,14 @@ module Toast {
 
   /* Private variables and functions */
 
-  var _container; // Toast container DOM element.
+  var _container,       // Toast container DOM element.
+      _containerCss;
 
   function _toast(
       type:     string,     // 'info', 'success', 'error', 'warning'
       message:  string,
-      title?:   string,
-      options?: Options = {}
+      title:    string,
+      options:  Options
       ): void
   {
     options = $.extend({}, defaults, options);
@@ -93,8 +98,14 @@ module Toast {
             .appendTo($('body'));
       }
     }
-    if (options.width) {
-      _container.css({width: options.width});
+    if (options.width || options.center) {
+      _containerCss = {};
+      if(options.width) _containerCss.width = options.width;
+      if(options.center) {
+        _containerCss.left = '50%';
+        _containerCss['margin-left'] = '-'+(options.width ? parseInt(options.width)+'px' : '150px');
+      }
+      _container.css(_containerCss);
     }
     var toastElement = $('<div>')
         .addClass('toast')
@@ -117,7 +128,10 @@ module Toast {
     toastElement.on('click', function () {
       toastElement.remove();
     });
-    _container.prepend(toastElement);
+    if(options.append)
+        _container.append(toastElement);
+    else
+        _container.prepend(toastElement);
   }
 
 }

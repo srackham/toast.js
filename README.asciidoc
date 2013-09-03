@@ -50,6 +50,8 @@ The read-write `Toast.defaults` object contains the following
 configuration properties:
 
   width:            CSS length, overrides CSS file.
+  append:           Boolean, whether to append new Toasts (defaults to prepend)
+  center:           Boolean, whether to center Toast (defaults to left align)
   displayDuration:  In milliseconds, set to 0 to make sticky.
   fadeOutDuration:  In milliseconds.
 
