@@ -80,7 +80,7 @@ module Toast {
       type:     string,     // 'info', 'success', 'error', 'warning'
       message:  string,
       title?:   string,
-      options?: Options = {}
+      options: Options = {}
       ): void
   {
     options = $.extend({}, defaults, options);
