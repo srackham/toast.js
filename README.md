@@ -1,21 +1,19 @@
-= toast.js browser notifier library
+# toast.js browser notifier library
 
-:listingblock.: <pre><code>|</code></pre>
 
-== toast.js
 Toast.js is a flexible minimalist JavaScript popup notifications
 library written in TypeScript.
 
-- http://twitter.github.com/bootstrap/index.html[Bootstrap] friendly
+- [Bootstrap](http://twitter.github.com/bootstrap/index.html) friendly
   but does not depend on Bootstrap (notification types and colors
   match Bootstrap alerts).
 
-- Inspired by https://github.com/Srirangan/notifer.js[notifier.js]
-  and https://github.com/CodeSeven/toastr[toastr].
+- Inspired by [notifier.js](https://github.com/Srirangan/notifer.js)
+  and [toastr](https://github.com/CodeSeven/toastr).
 
-http://www.methods.co.nz/misc/toast/toast-examples.html[Live demo].
+[Live demo](http://www.methods.co.nz/misc/toast/toast-examples.html).
 
-=== Usage
+## Usage
 Include `toast.js` and `toast.css` (along with JQuery) then call the
 Toast popup functions from your code e.g.
 
@@ -29,29 +27,29 @@ Toast.js uses jQuery so you'll also need to include it.  See
 the `toast-examples.html` examples.
 
 Toast has been also been published as a Meteorite
-https://atmosphere.meteor.com/package/toastjs[smart package] for
-use with the http://meteor.com/[Meteor] Web framework.
+[smart package](https://atmosphere.meteor.com/package/toastjs) for
+use with the [Meteor](http://meteor.com/) Web framework.
 
-=== API
+## API
 Popup functions:
 
-  Toast.info    (message [,title [, options]])
-  Toast.warning (message [,title [, options]])
-  Toast.error   (message [,title [, options]])
-  Toast.success (message [,title [, options]])
+    Toast.info    (message [,title [, options]])
+    Toast.warning (message [,title [, options]])
+    Toast.error   (message [,title [, options]])
+    Toast.success (message [,title [, options]])
 
 Function parameters:
 
-  message: String
-  title:   String
-  options: Object with properties to override Toast.defaults
+    message: String
+    title:   String
+    options: Object with properties to override Toast.defaults
 
 The read-write `Toast.defaults` object contains the following
 configuration properties:
 
-  width:            CSS length, overrides CSS file.
-  displayDuration:  In milliseconds, set to 0 to make sticky.
-  fadeOutDuration:  In milliseconds.
+    width:            CSS length, overrides CSS file.
+    displayDuration:  In milliseconds, set to 0 to make sticky.
+    fadeOutDuration:  In milliseconds.
 
 Behavior:
 
@@ -65,24 +63,22 @@ Behavior:
 
 Examples:
 
-----
-Toast.info('Simple message');
-Toast.success('Message with title', 'Title');
-Toast.error('Sticky message', '', {displayDuration: 0});
-Toast.defaults.displayDuration = 1000;
-Toast.defaults.fadeOutDuration = 800;
-Toast.defaults.width = '800px';
-----
+    Toast.info('Simple message');
+    Toast.success('Message with title', 'Title');
+    Toast.error('Sticky message', '', {displayDuration: 0});
+    Toast.defaults.displayDuration = 1000;
+    Toast.defaults.fadeOutDuration = 800;
+    Toast.defaults.width = '800px';
 
-=== Building
+## Building
 To generate `toast.js` JavaScript from the `toast.ts` source file copy
 the `jquery.d.ts` type declaration file from the TypeScript
 distribution to the build directory then run the Typescript compiler:
 
-  tsc toast.ts
+    tsc toast.ts
 
-If you have https://github.com/mde/jake[jake] installed you can run:
+If you have [jake](https://github.com/mde/jake) installed you can run:
 
-  jake build
+    jake build
 
 
