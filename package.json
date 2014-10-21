@@ -1,0 +1,37 @@
+{
+  "name": "toast.js",
+  "author": "Stuart Rackham <srackham@gmail.com>",
+  "version": "2.0.6",
+  "description": "Browser popup notifications library",
+  "keywords": [
+    "toast",
+    "popup"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/srackham/toast.js/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">=0.8"
+  },
+  "main": "toast",
+  "files": [
+    "toast.js",
+    "toast.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srackham/toast.js"
+  },
+  "devDependencies": {
+    "jake": "^8.0.4",
+    "jsonlint": "^1.6.0",
+    "shelljs": "^0.3.0",
+    "tslint": "^0.4.12",
+    "typescript": "^1.1.0",
+    "uglify-js": "^2.4.15",
+    "w3cjs": "^0.1.25"
+  }
+}

@@ -20,7 +20,7 @@ module Toast {
     width?: string;             // CSS length, overrides CSS file.
     displayDuration?: number;   // In milliseconds, set to 0 to make sticky.
     fadeOutDuration?: number;   // In milliseconds.
-  };
+  }
 
   // Modifiable defaults.
   export var defaults: Options = {
@@ -37,7 +37,7 @@ module Toast {
    * @param title An optional title string.
    * @param options An optional map of {@link Options}.
    */
-  export function info(message:string, title?:string, options?:Options) {
+  export function info(message: string, title?: string, options?: Options): void {
     _toast('info', message, title, options);
   }
 
@@ -47,7 +47,7 @@ module Toast {
    * @param title An optional title string.
    * @param options An optional map of {@link Options}.
    */
-  export function warning(message:string, title?:string, options?:Options) {
+  export function warning(message: string, title?: string, options?: Options): void {
     _toast('warning', message, title, options);
   }
 
@@ -57,7 +57,7 @@ module Toast {
    * @param title An optional title string.
    * @param options An optional map of {@link Options}.
    */
-  export function error(message:string, title?:string, options?:Options) {
+  export function error(message: string, title?: string, options?: Options): void {
     _toast('error', message, title, options);
   }
 
@@ -67,14 +67,14 @@ module Toast {
    * @param title An optional title string.
    * @param options An optional map of {@link Options}.
    */
-  export function success(message:string, title?:string, options?:Options) {
+  export function success(message: string, title?: string, options?: Options): void {
     _toast('success', message, title, options);
   }
 
 
   /* Private variables and functions */
 
-  var _container; // Toast container DOM element.
+  var _container: JQuery; // Toast container DOM element.
 
   function _toast(
       type:     string,     // 'info', 'success', 'error', 'warning'
@@ -108,13 +108,13 @@ module Toast {
       toastElement.append(messageElement);
     }
     if (options.displayDuration > 0) {
-      setTimeout(function () {
-        toastElement.fadeOut(options.fadeOutDuration, function () {
+      setTimeout(function (): void {
+        toastElement.fadeOut(options.fadeOutDuration, function (): void {
           toastElement.remove();
         });
       }, options.displayDuration);
     }
-    toastElement.on('click', function () {
+    toastElement.on('click', function (): void {
       toastElement.remove();
     });
     _container.prepend(toastElement);

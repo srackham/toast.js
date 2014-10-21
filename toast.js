@@ -1,5 +1,3 @@
-// Compiled from: toast.ts
-// https://github.com/srackham/toast.js
 //
 // Toast popup notifier
 //
@@ -13,64 +11,58 @@
 var Toast;
 (function (Toast) {
     ;
-
     // Modifiable defaults.
     Toast.defaults = {
         width: '',
         displayDuration: 2000,
         fadeOutDuration: 800
     };
-
     /* Popup functions */
     /**
-    * Popup informational message.
-    * @param message A message string.
-    * @param title An optional title string.
-    * @param options An optional map of {@link Options}.
-    */
+     * Popup informational message.
+     * @param message A message string.
+     * @param title An optional title string.
+     * @param options An optional map of {@link Options}.
+     */
     function info(message, title, options) {
         _toast('info', message, title, options);
     }
     Toast.info = info;
-
     /**
-    * Popup warning message.
-    * @param message A message string.
-    * @param title An optional title string.
-    * @param options An optional map of {@link Options}.
-    */
+     * Popup warning message.
+     * @param message A message string.
+     * @param title An optional title string.
+     * @param options An optional map of {@link Options}.
+     */
     function warning(message, title, options) {
         _toast('warning', message, title, options);
     }
     Toast.warning = warning;
-
     /**
-    * Popup error message.
-    * @param message A message string.
-    * @param title An optional title string.
-    * @param options An optional map of {@link Options}.
-    */
+     * Popup error message.
+     * @param message A message string.
+     * @param title An optional title string.
+     * @param options An optional map of {@link Options}.
+     */
     function error(message, title, options) {
         _toast('error', message, title, options);
     }
     Toast.error = error;
-
     /**
-    * Popup success message.
-    * @param message A message string.
-    * @param title An optional title string.
-    * @param options An optional map of {@link Options}.
-    */
+     * Popup success message.
+     * @param message A message string.
+     * @param title An optional title string.
+     * @param options An optional map of {@link Options}.
+     */
     function success(message, title, options) {
         _toast('success', message, title, options);
     }
     Toast.success = success;
-
     /* Private variables and functions */
-    var _container;
-
-    function _toast(type, message, title, options) {
-        if (typeof options === "undefined") { options = {}; }
+    var _container; // Toast container DOM element.
+    function _toast(type, // 'info', 'success', 'error', 'warning'
+        message, title, options) {
+        if (options === void 0) { options = {}; }
         options = $.extend({}, Toast.defaults, options);
         if (!_container) {
             _container = $('#toast-container');
@@ -104,4 +96,4 @@ var Toast;
         _container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
-this.Toast = Toast;
+this.Toast = Toast; // Fix Meteor 0.6.0 var scope incompatibility.
