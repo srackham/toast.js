@@ -128,8 +128,10 @@ task('commit', ['test'], {async: true}, function() {
   jake.exec('git commit -a', {interactive: true}, complete);
 });
 
+/*
 desc('push, publish-npm.');
 task('publish', ['push', 'publish-npm']);
+*/
 
 desc('Push local commits to Github.');
 task('push', ['test'], {async: true}, function() {
