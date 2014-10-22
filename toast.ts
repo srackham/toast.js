@@ -76,29 +76,24 @@ module Toast {
 
   var _container: JQuery; // Toast container DOM element.
 
-  function _toast(
-      type:     string,     // 'info', 'success', 'error', 'warning'
-      message:  string,
-      title?:   string,
-      options: Options = {}
-      ): void
-  {
+  function _toast(type: string,     // 'info', 'success', 'error', 'warning'
+                  message: string, title?: string, options: Options = {}): void {
     options = $.extend({}, defaults, options);
     if (!_container) {
       _container = $('#toast-container');
       if (_container.length === 0) {
         // Create container element if it is not in the static HTML.
         _container = $('<div>')
-            .attr('id', 'toast-container')
-            .appendTo($('body'));
+          .attr('id', 'toast-container')
+          .appendTo($('body'));
       }
     }
     if (options.width) {
       _container.css({width: options.width});
     }
     var toastElement = $('<div>')
-        .addClass('toast')
-        .addClass('toast-' + type);
+      .addClass('toast')
+      .addClass('toast-' + type);
     if (title) {
       var titleElement = $('<div>').addClass('toast-title').append(title);
       toastElement.append(titleElement);

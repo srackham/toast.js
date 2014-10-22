@@ -1,31 +1,38 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>toast.js Examples</title>
-    <link href="toast.css" rel="stylesheet" media="screen">
-  </head>
-  <body style="font-family: Helvetica, Arial, sans-serif;">
+<head>
+  <meta charset="utf-8">
+  <title>toast.js Examples</title>
+  <link href="toast.css" rel="stylesheet" media="screen">
+</head>
+<body style="font-family: Helvetica, Arial, sans-serif;">
 
-    <h1>toast.js Examples</h1>
+<h1>toast.js Examples</h1>
 
-    <p>Project home on <a href="https://github.com/srackham/toast.js">Github</a>.</p>
+<p>Project home on <a href="https://github.com/srackham/toast.js">Github</a>.</p>
 
-    <ul class="list">
-      <li><a href="#" onclick="Toast.success('Message')">Success</a></li>
-      <li><a href="#" onclick="Toast.success('Message', 'Title', {displayDuration: 0})">Sticky success with title</a></li>
-      <li><a href="#" onclick="Toast.info('Message', '', {displayDuration: 0})">Sticky info</a></li>
-      <li><a href="#" onclick="Toast.defaults.displayDuration=500; Toast.info('Default displayDuration 500ms', 'Title')">Info: Change displayDuration to 200ms</a></li>
-      <li><a href="#" onclick="Toast.defaults.displayDuration=2000; Toast.warning('Default displayDuration 2000ms')">Warning: Change displayDuration to 2000ms</a></li>
-      <li><a href="#" onclick="Toast.warning('Message', 'Title')">Warning with title</a></li>
-      <li><a href="#" onclick="Toast.error('Message')">Error</a></li>
-      <li><a href="#" onclick="Toast.error('Message', 'Title')">Error with title</a></li>
-      <li><a href="#" onclick="Toast.defaults.width='600px'; Toast.info('Message', 'Title')">Info with title: Changed default width to 600px</a></li>
-      <li><a href="#" onclick="Toast.defaults.width='200px'; Toast.info('Message', 'Title')">Info with title: Changed default width to 200px</a></li>
-    </ul>
+<ul class="list">
+  <li><a href="#" onclick="Toast.success('Message')">Success</a></li>
+  <li><a href="#" onclick="Toast.success('Message', 'Title', {displayDuration: 0})">Sticky success
+    with title</a></li>
+  <li><a href="#" onclick="Toast.info('Message', '', {displayDuration: 0})">Sticky info</a></li>
+  <li><a href="#"
+         onclick="Toast.defaults.displayDuration=500; Toast.info('Default displayDuration 500ms', 'Title')">Info:
+    Change displayDuration to 200ms</a></li>
+  <li><a href="#"
+         onclick="Toast.defaults.displayDuration=2000; Toast.warning('Default displayDuration 2000ms')">Warning:
+    Change displayDuration to 2000ms</a></li>
+  <li><a href="#" onclick="Toast.warning('Message', 'Title')">Warning with title</a></li>
+  <li><a href="#" onclick="Toast.error('Message')">Error</a></li>
+  <li><a href="#" onclick="Toast.error('Message', 'Title')">Error with title</a></li>
+  <li><a href="#" onclick="Toast.defaults.width='600px'; Toast.info('Message', 'Title')">Info with
+    title: Changed default width to 600px</a></li>
+  <li><a href="#" onclick="Toast.defaults.width='200px'; Toast.info('Message', 'Title')">Info with
+    title: Changed default width to 200px</a></li>
+</ul>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="toast.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="toast.js"></script>
 
-  </body>
+</body>
 </html>
