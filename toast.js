@@ -10,7 +10,6 @@
 /// <reference path="jquery.d.ts" />
 var Toast;
 (function (Toast) {
-    ;
     // Modifiable defaults.
     Toast.defaults = {
         width: '',
@@ -96,4 +95,3 @@ var Toast;
         _container.prepend(toastElement);
     }
 })(Toast || (Toast = {}));
-this.Toast = Toast; // Fix Meteor 0.6.0 var scope incompatibility.

@@ -26,9 +26,6 @@ DOM manipulation required).
 Toast.js uses jQuery so you'll also need to include it.  See
 the `toast-examples.html` examples.
 
-Toast has been also been published as a Meteorite
-[smart package](https://atmosphere.meteor.com/package/toastjs) for
-use with the [Meteor](http://meteor.com/) Web framework.
 
 ## API
 Popup functions:
