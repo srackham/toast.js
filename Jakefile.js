@@ -32,22 +32,26 @@ function exec(commands, callback) {
   }
   callback = callback || complete;
   var remaining = commands.length;
-  commands.forEach(function(command) {
-    jake.logger.log('Starting: ' + command);
-    child_process.exec(command, function(error, stdout, stderr) {
-      jake.logger.log('Finished: ' + command);
-      if (!jake.program.opts.quiet) {
-        process.stdout.write(stdout);
-      }
-      if (error !== null) {
-        fail(error, error.code);
-      }
-      remaining--;
-      if (remaining === 0) {
-        callback();
-      }
+  if (remaining === 0) {
+    callback();
+  } else {
+    commands.forEach(function(command) {
+      jake.logger.log('Starting: ' + command);
+      child_process.exec(command, function(error, stdout, stderr) {
+        jake.logger.log('Finished: ' + command);
+        if (!jake.program.opts.quiet) {
+          process.stdout.write(stdout);
+        }
+        if (error !== null) {
+          fail(error, error.code);
+        }
+        remaining--;
+        if (remaining === 0) {
+          callback();
+        }
+      });
     });
-  });
+  }
 }
 
 
@@ -63,7 +67,7 @@ desc('Run test task.');
 task('default', ['test']);
 
 desc('compile, lint, test');
-task('build', ['test', 'lint']);
+task('build', ['test']);
 
 desc('Lint source files.');
 task('lint', {async: true}, function() {
