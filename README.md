@@ -11,6 +11,8 @@ library written in TypeScript.
 - Inspired by [notifier.js](https://github.com/Srirangan/notifer.js)
   and [toastr](https://github.com/CodeSeven/toastr).
 
+Project source on [Github](https://github.com/srackham/toast.js).
+
 [Live demo](http://www.methods.co.nz/misc/toast/toast-examples.html).
 
 ## Usage
