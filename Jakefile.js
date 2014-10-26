@@ -10,9 +10,9 @@ var child_process = require('child_process');
 
 /* Inputs and outputs */
 
-var TOAST_JS = 'toast.js';
-var TOAST_TS = 'toast.ts';
-var TOAST_MIN_JS = 'toast.min.js';
+var TOAST_JS = './dist/toast.js';
+var TOAST_TS = './src/toast.ts';
+var TOAST_MIN_JS = './dist/toast.min.js';
 
 
 /* Utility functions. */
@@ -100,7 +100,7 @@ file(TOAST_MIN_JS, [TOAST_JS], {async: true}, function() {
 desc('Validate HTML documents with W3C Validator.');
 task('validate-html', {async: true}, function() {
   var commands = [];
-  commands.push('w3cjs validate toast-examples.html');
+  commands.push('w3cjs validate ./doc/toast-examples.html');
   exec(commands);
 });
 
