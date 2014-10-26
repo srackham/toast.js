@@ -13,6 +13,8 @@ QUnit.test('Sticky toast', function(assert) {
 
 QUnit.test('Timeout toast', function(assert) {
   Toast.defaults.width = '600px';
+  Toast.defaults.displayDuration = 1000;
+  Toast.defaults.fadeOutDuration = 300;
   Toast.info('Message', 'Timeout toast');
   var container = $(TOAST_SELECTOR);
   assert.ok(container.length > 0, 'Create toast container element');
@@ -23,7 +25,11 @@ QUnit.test('Timeout toast', function(assert) {
   stop();
   setTimeout(function() {
     container = $(TOAST_SELECTOR);
-    assert.ok(container.length === 0, 'Delete toast container element');
-    start();  // Restart test.
-  }, Toast.defaults.displayDuration + Toast.defaults.fadeOutDuration + 100);
+    assert.ok(container.length > 0, 'Toast not yet timed out');
+    setTimeout(function() {
+      container = $(TOAST_SELECTOR);
+      assert.ok(container.length === 0, 'Toast timed out');
+      start();  // Restart test.
+    }, 200);
+  }, Toast.defaults.displayDuration + Toast.defaults.fadeOutDuration - 100);
 });
