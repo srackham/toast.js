@@ -66,8 +66,8 @@ function exec(commands, callback) {
 desc('Run test task.');
 task('default', ['test']);
 
-desc('compile, lint, test');
-task('build', ['test']);
+desc('compile, lint, test, validate HTML.');
+task('build', ['test', 'validate-html']);
 
 desc('Lint source files.');
 task('lint', {async: true}, function() {
