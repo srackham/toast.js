@@ -1,7 +1,7 @@
 {
   "name": "toast.js",
   "author": "Stuart Rackham <srackham@gmail.com>",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Browser popup notifications library",
   "keywords": [
     "toast",
