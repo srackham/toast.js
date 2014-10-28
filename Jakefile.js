@@ -114,6 +114,7 @@ task('version', function() {
       fail('Invalid version number: ' + version + '\n');
     }
     shelljs.sed('-i', /(\n\s*"version"\s*:\s*)"\d+\.\d+\.\d+"/, '$1' + '"' + version + '"', 'package.json');
+    pkg.version = version;
   }
 });
 
