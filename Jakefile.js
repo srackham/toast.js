@@ -80,12 +80,8 @@ task('lint', {async: true}, function() {
   exec(commands);
 });
 
-desc('Run tests (recompile if necessary).');
-task('test', ['compile', 'lint'], {async: true}, function() {
-  var commands = [];
-  // TODO: Unit tests.
-  exec(commands);
-});
+desc('Run tests (see ./test/index.html for QUnit tests).');
+task('test', ['compile', 'lint']);
 
 desc('Compile Typescript to JavaScript then uglify.');
 task('compile', [TOAST_JS, TOAST_MIN_JS]);
