@@ -69,6 +69,9 @@ task('default', ['test']);
 desc('compile, lint, test, validate HTML.');
 task('build', ['test', 'validate-html']);
 
+desc('Update version number, tag and push to Github. Use vers=x.y.z argument to set a new version number.');
+task('release', ['build', 'version', 'tag', 'push']);
+
 desc('Lint source files.');
 task('lint', {async: true}, function() {
   var commands = [];
@@ -104,7 +107,7 @@ task('validate-html', {async: true}, function() {
   exec(commands);
 });
 
-desc('Display or update the project version number. Use vers=x.y.z syntax to set a new version number.');
+desc('Display or update the project version number. Use vers=x.y.z argument to set a new version number.');
 task('version', function() {
   var version = process.env.vers;
   if (!version) {
