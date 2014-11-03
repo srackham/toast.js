@@ -84,6 +84,7 @@ desc('Run unit tests.');
 task('test', ['compile', 'lint'], {async: true}, function() {
   var commands = [];
   commands.push('w3cjs validate ./doc/toast-examples.html');
+  commands.push('w3cjs validate ./test/index.html');
   commands.push('karma start --single-run');
   exec(commands);
 });
