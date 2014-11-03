@@ -28,6 +28,10 @@
   "devDependencies": {
     "jake": "^8.0.4",
     "jsonlint": "^1.6.0",
+    "karma": "^0.12.24",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-qunit": "^0.1.4",
+    "qunitjs": "^1.15.0",
     "shelljs": "^0.3.0",
     "tslint": "^0.4.12",
     "typescript": "^1.1.0",

@@ -38,13 +38,13 @@ function exec(commands, callback) {
     commands.forEach(function(command) {
       jake.logger.log('Starting: ' + command);
       child_process.exec(command, function(error, stdout, stderr) {
-        jake.logger.log('Finished: ' + command);
         if (!jake.program.opts.quiet) {
           process.stdout.write(stdout);
         }
         if (error !== null) {
           fail(error, error.code);
         }
+        jake.logger.log('Finished: ' + command);
         remaining--;
         if (remaining === 0) {
           callback();
@@ -80,8 +80,10 @@ task('lint', {async: true}, function() {
   exec(commands);
 });
 
-desc('Run tests (see ./test/index.html for QUnit tests).');
-task('test', ['compile', 'lint']);
+desc('Run unit tests.');
+task('test', ['compile', 'lint'], {async: true}, function() {
+  exec('karma start --single-run');
+});
 
 desc('Compile Typescript to JavaScript then uglify.');
 task('compile', [TOAST_JS, TOAST_MIN_JS]);
