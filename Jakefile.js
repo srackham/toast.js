@@ -66,8 +66,8 @@ function exec(commands, callback) {
 desc('Run test task.');
 task('default', ['test']);
 
-desc('compile, lint, test, validate HTML.');
-task('build', ['test', 'validate-html']);
+desc('compile, lint, HTML validation, unit tests.');
+task('build', ['test']);
 
 desc('Update version number, tag and push to Github. Use vers=x.y.z argument to set a new version number.');
 task('release', ['build', 'version', 'tag', 'push']);
@@ -82,7 +82,10 @@ task('lint', {async: true}, function() {
 
 desc('Run unit tests.');
 task('test', ['compile', 'lint'], {async: true}, function() {
-  exec('karma start --single-run');
+  var commands = [];
+  commands.push('w3cjs validate ./doc/toast-examples.html');
+  commands.push('karma start --single-run');
+  exec(commands);
 });
 
 desc('Compile Typescript to JavaScript then uglify.');
@@ -96,13 +99,6 @@ file(TOAST_MIN_JS, [TOAST_JS], {async: true}, function() {
   var preamble = '/* ' + pkg.name + ' ' + pkg.version + ' (' + pkg.repository.url + ') */';
   var command = 'uglifyjs  --preamble "' + preamble + '" --output ' + TOAST_MIN_JS + ' ' + TOAST_JS;
   exec(command);
-});
-
-desc('Validate HTML documents with W3C Validator.');
-task('validate-html', {async: true}, function() {
-  var commands = [];
-  commands.push('w3cjs validate ./doc/toast-examples.html');
-  exec(commands);
 });
 
 desc('Display or update the project version number. Use vers=x.y.z argument to set a new version number.');
